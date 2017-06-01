@@ -1,10 +1,11 @@
-package me.nithanim.cultures.format.cif;
+package me.nithanim.cultures.format.cif.type2;
 
 import io.netty.buffer.ByteBuf;
 import java.io.IOException;
-import me.nithanim.cultures.format.common.Codec;
+import me.nithanim.cultures.format.cif.EncryptedInformation;
+import me.nithanim.cultures.format.cif.Reader;
 
-public class CifFileType2Codec implements Codec<EncryptedInformation> {
+public class CifFileType2Reader implements Reader<EncryptedInformation> {
     @Override
     public EncryptedInformation unpack(ByteBuf buf) throws IOException {
         skipBytes(buf, 4 + 4);

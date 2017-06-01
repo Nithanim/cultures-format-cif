@@ -9,7 +9,7 @@ public class EncryptedInformation {
     private int contentLength;
     private ByteBuf encryptedContentTable;
 
-    EncryptedInformation(int numberOfEntries, int indexLength, ByteBuf encryptedIndexTable, int contentLength, ByteBuf encryptedContentTable) {
+    public EncryptedInformation(int numberOfEntries, int indexLength, ByteBuf encryptedIndexTable, int contentLength, ByteBuf encryptedContentTable) {
         this.numberOfEntries = numberOfEntries;
         this.indexLength = indexLength;
         this.encryptedIndexTable = encryptedIndexTable;
