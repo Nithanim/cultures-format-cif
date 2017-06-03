@@ -9,16 +9,14 @@ public class CifFileType1Reader implements Reader<EncryptedInformation> {
     @Override
     public EncryptedInformation unpack(ByteBuf buf) throws IOException {
         int numberOfEntries = buf.readInt();
-        skipBytes(buf, 4 + 4);
+        buf.skipBytes(4 + 4);
+        
         int indexLength = buf.readInt();
         ByteBuf encryptedIndexTable = buf.slice(buf.readerIndex(), indexLength * 4);
-        skipBytes(buf, 2 + 4);
+        buf.skipBytes(2 + 4);
+        
         int contentLength = buf.readInt();
         ByteBuf encryptedContentTable = buf.slice(buf.readerIndex(), contentLength);
         return new EncryptedInformation(numberOfEntries, indexLength, encryptedIndexTable, contentLength, encryptedContentTable);
-    }
-
-    private static void skipBytes(ByteBuf buf, int bytes) {
-        buf.readerIndex(buf.readerIndex() + bytes);
     }
 }
